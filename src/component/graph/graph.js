@@ -11,18 +11,18 @@ function Graph(props) {
       <div className="ProgressBar">
         {/*  */}
         <p>
-          <b>:אחוזי עמידה באימון כקבוצה</b>
+          <b className="b2">:אחוזי עמידה באימון כקבוצה</b>
         </p>
         <ProgressBar
           striped
           variant="info"
           now={location.state.data.doc2?.percentTrainingGroup}
           label={`${location.state.data.doc2.percentTrainingGroup}%`}
-        />
+        /> 
         <br></br>
         <br></br>
         <p>
-          <b>:אחוזי עמידה באימון כיחיד</b>
+          <b className="b1">:אחוזי עמידה באימון כיחיד</b>
         </p>
         <ProgressBar
           striped
@@ -33,7 +33,7 @@ function Graph(props) {
         <br></br>
         <br></br>
         <p>
-          <b>:אחוזי עמידה בתפריט כקבוצה</b>
+          <b className="b2">:אחוזי עמידה בתפריט כקבוצה</b>
         </p>
         <ProgressBar
           striped
@@ -45,7 +45,7 @@ function Graph(props) {
         <br></br>
         <br></br>
         <p>
-          <b>:אחוזי עמידה בתפריט כיחיד</b>
+          <b className="b1">:אחוזי עמידה בתפריט כיחיד</b>
         </p>
         <ProgressBar
           striped

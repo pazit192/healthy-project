@@ -13,6 +13,7 @@ import AppBarLocal from "./component/AppBarLocal";
 import LoginHome from "./component/LoginHome";
 import { updateUser } from "./component/Redux/Actions/action";
 
+
 function mapStateToProps(state) {
   return {
     currentUser: state.userReducer.user,
@@ -24,6 +25,7 @@ function App(props) {
   const { currentUser, dispatch } = props;
   const [register, setRegister] = useState(false);
   const [userName, setUserName] = useState("");
+  // const [isHidden, setHidden] = useState(true);
   const [userId, setUserId] = useState("");
   const [linksNavBar, setLinksNavBar] = useState([]);
 
@@ -38,12 +40,16 @@ function App(props) {
   }, []);
   return (
     <Stack>
+      {/* {onclick ?(
+       "/LoginHome.js"
+      ):( */}
       <AppBarLocal
         linksNavBar={linksNavBar}
         userName={userName}
         setUserName={setUserName}
         register={register}
       />
+      {/* )} */}
       {/* <Header linksNavBar={linksNavBar} /> */}
       {register ? (
         <Outlet userId={userId} />

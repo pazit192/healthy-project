@@ -41,8 +41,7 @@ function Login(props) {
   }
 
   function dddd(e) {
-    console.log(e.name);
-    navigate("/Registrationpage", { state: { groupeId: e.name } });
+    navigate("/Registrationpage", { state: { groupeId: e.id } });
   }
   console.log("groups", groups);
 

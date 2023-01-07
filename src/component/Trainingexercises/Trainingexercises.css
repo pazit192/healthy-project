@@ -5,6 +5,10 @@ font-family: "FrankRuehl Backslanted";
 }
 .code{
     font-family: "Dybbuk";
-    color:palegreen;
+    color:rgb(160, 218, 112);
     font-size:70px ;
+    /* margin-left:250px ;
+    padding-left: 250px; */
+    margin: auto;
+    padding: auto;
 }

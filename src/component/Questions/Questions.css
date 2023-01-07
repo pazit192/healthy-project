@@ -1,41 +1,72 @@
-.dh{
-font-family: "Dybbuk";
-font-size:100px ;
+/* .dh{
+    font-family:'Guttman Mantova-Decor'; */
+    /* font-family: "Dybbuk"; */
+/* font-size:100px ;
 color:palegreen;
 
-}
-.form{
+} */
+/* .form{
         margin-left:770px;
-        margin-right:770px; 
+        margin-right:770px;  */
          /* width:100px;*/
           /* height: 70px;  */
          /* margin:80px; 
          padding:10px; */ 
-         font-size: 30px;
+         /* font-size: 30px;
         
-}
-.button2{
-    background-color:palegreen; 
+} */
+.--btn--btn-primary{
+    background-color:rgb(160, 218, 112); 
     font-family:"Alef";
-    border-top-color:palegreen ;
-    border-right-color: palegreen;
-    border-left-color:palegreen ;
-    border-bottom-color: palegreen;
+    border-top-color:rgb(160, 218, 112) ;
+    border-right-color: rgb(160, 218, 112);
+    border-left-color:rgb(160, 218, 112) ;
+    border-bottom-color: rgb(160, 218, 112);
     text-align: center;
     
 }
-.button2:hover{
-    background-color:black; 
+.--btn--btn-primary:hover{
+    background-color:white; 
     border-top-color:black ;
     border-right-color: black;
     border-left-color:black ;
     border-bottom-color: black;
+    color: rgb(160, 218, 112);
 }
-.row1{
+/* .row1{
     margin-left: auto;
     margin-right: auto;
     width: 19%;
 
+} */
+
+.--text-center{
+ color:rgb(160, 218, 112);
+ font-family:'Guttman Mantova-Decor';
+ font-size:50px;
+ margin-left: 250px;
+ padding-left:250px ;
+
+}
+.--from-control--card{
+    margin-left: 280px;
+    padding-left:280px ;
 }
 
+.--btn--btn-primary{
+    margin-left: 50px;
+    padding-left:50px ;
+    margin-right: 50px;
+    padding-right:50px ;
+
+}
+/* .text{
+    padding-right:20px;
+    margin-right:20px ;
+} */
+.container{
+    text-align: center;
+    padding-right:300px;
+    margin-right:300px ;
+}
 

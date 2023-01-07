@@ -28,8 +28,9 @@
       
     }
     .c{
-    background-color:palegreen; 
+    background-color:rgb(160, 218, 112); 
     text-align: center;
+     /* overflow: "scroll" ; */
   
     }
     
@@ -42,5 +43,5 @@
   
   .groupColor{
       /* lightyellow */
-      background-color:lightgrey;
+      background-color:rgb(211, 211, 211);
   } 

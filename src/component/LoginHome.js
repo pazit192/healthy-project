@@ -3,7 +3,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
-import Fruits from "../assets/Imges/Fruits.png";
+import logo from "../assets/Imges/logo.jpg";
+import { Form, Row } from "react-bootstrap";
 
 const linksNavBar = [
   {
@@ -30,25 +31,72 @@ const linksNavBar = [
     name: "המלצותינו",
     link: "/Recommendations",
   },
+  {
+    name: "אודותינו",
+    link: "/Aboutus",
+  },
 ];
 
-function LoginHome(props) {
-  const [id, setId] = useState("");
-  const cookies = new Cookies();
 
+function LoginHome(props) {
+  // alert(props.isHidden);
+  const [id, setId] = useState("");
+
+  const cookies = new Cookies();
+   
+  
   function checkUser() {
+ 
+
+    if (!id || id === "") 
+    {
+      // props.setHidden(false);
+      return
+      // newErrors.id = "require";
+    }
+ 
+    // props.setIsErrorMessageHidden(true);
     axios.get("http://localhost:3030/user/getUser").then((res) => {
-      console.log(res.data);
       const user = res.data.find((user) => user.id === id);
-      cookies.set("user", user.id);
       if (user) {
+        cookies.set("user", user.id);
+        const current = new Date();
+        localStorage.setItem("user", JSON.stringify(user))
+        if ((getWeeksDiff(new Date(user.date), current) >= 8 && user.groupeId == 1) ||
+            (getWeeksDiff(new Date(user.date), current) >= 16 && user.groupeId == 2) ||
+            (getWeeksDiff(new Date(user.date), current) >= 48 && user.groupeId == 5) ||
+            (getWeeksDiff(new Date(user.date), current) >= 2 && user.groupeId == 3) ||
+            (getWeeksDiff(new Date(user.date), current) >= 4 && user.groupeId == 4) ||
+            (getWeeksDiff(new Date(user.date), current) >= 4 && user.groupeId == 6))
+        {
+          Remove(user.id);
+          return alert('הינך סיימת את תקופתך בדיאטה וביכולתך להרשם שוב,תודה רבה!')
+        }
+
+     
         props.setUserName(user.name);
         props.setUserId(user.id);
         props.setRegister(true);
         props.setLinksNavBar([...linksNavBar]);
+      } else {
+        alert('ת.ז לא קיימת')
       }
     });
   }
+
+  function Remove(id) {
+    axios.delete(`http://localhost:3030/user/deleteuser/${id}`).then((res) => {
+
+     });
+  }
+
+  function getWeeksDiff(startDate, endDate) {
+    const msInWeek = 1000 * 60 * 60 * 24 * 7;
+  
+    return Math.round(Math.abs(endDate - startDate) / msInWeek);
+  }
+
+  
   return (
     <Box style={{ paddingRight: "20%", paddingLeft: "20%", marginTop: "8%" }}>
       <Grid
@@ -73,13 +121,12 @@ function LoginHome(props) {
               justifyContent: "center",
             }}
           >
-            <Typography
-              style={{ color: "black", fontSize: 20, paddingLeft: 7 }}
-              variant="h6"
-            >
-              הכנס ת.ז
-            </Typography>
             <Stack>
+            <h4 style={{
+                  paddingLeft: 7,
+                  alignSelf: "center",
+                }}>כניסה לאזור האישי</h4>
+           
               <TextField
                 size="small"
                 type="text"
@@ -94,57 +141,47 @@ function LoginHome(props) {
                 //   });
                 //   setErrors({ ...errors, [field.name]: undefined });
                 // }}
-                InputProps={{ inputProps: { min: 0 } }}
+                InputProps={{ inputProps: { min: 9 } }}
                 InputLabelProps={{
                   shrink: true,
                 }}
               ></TextField>
+  
+         
+         
               <Button
                 sx={{
+                  marginLeft:15,
+                  paddingLeft:15,
                   borderRadius: 20,
                   marginTop: 2,
-                  marginBottom: 4,
                   backgroundColor: "#A0CE5E",
                 }}
-                onClick={() => checkUser()}
+                onClick={(to="/Homepage") => checkUser()  }
                 variant="contained"
                 type="submit"
+               
               >
-                היכנס
+                כניסה
               </Button>
-              <Typography
-                style={{
-                  color: "black",
-                  fontSize: 20,
-                  paddingLeft: 7,
-                  alignSelf: "center",
-                }}
-                variant="h6"
-              >
-                או בחר קבוצה
-              </Typography>
-              <Button
-                sx={{ borderRadius: 20, backgroundColor: "#A0CE5E" }}
-                variant="contained"
-                type="submit"
-                onClick={() => props.setRegister(true)}
-              >
-                <Link to="/Login"> בחירת קבוצה</Link>
-              </Button>
+              
+              <Link to="/Login"  style={{ direction: 'ltr'}}>   
+              <span onClick={() => props.setRegister(true)}>להרשמה לחץ כאן</span></Link>
             </Stack>
           </Stack>
         </Grid>
         <Grid item style={{ flex: 1 }}>
-          <Box
+         <Box
             component="img"
             sx={{
-              height: 350,
+              height:350,
               width: 400,
             }}
             alt="logo"
-            src={Fruits}
+            src={logo}
           />
-        </Grid>
+        </Grid> 
+        
       </Grid>
     </Box>
   );

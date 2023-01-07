@@ -1,10 +1,28 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useRef,useState } from "react";
 import { Button, Form, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
+
+import "./graphdaf.css";
+
 // import { Bro wserRouter, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 // import Graphd from "./graphdaf";
+
+// export function findRegistrationFormErrors1(userDetails) {
+//   let newErrors = {};
+
+//   if (!e || e === "") newErrors.e = "require";
+//   else if ((e && e.length !== 1) || (id && !eRegex.test(e)))
+//     newErrors.e = "valide";
+  
+  
+//   return newErrors1;
+// }
+
+
+
 function mapStateToProps(state) {
   return {
     currentUser: state.userReducer.user,
@@ -12,6 +30,8 @@ function mapStateToProps(state) {
 }
 function Graphd(props) {
   const navigate = useNavigate();
+ 
+
   const [data, setData] = useState({
     percentTraining: "",
     percentMenu: "",
@@ -23,6 +43,7 @@ function Graphd(props) {
   // }
 
   function pass() {
+    if ( data.percentMenu == '' || data.percentTraining == '') return   
     axios.post(`http://localhost:3030/graph/setData`, data).then((res) => {
       console.log(res.data);
       navigate("/Graph", { state: { data: res.data } });
@@ -37,7 +58,7 @@ function Graphd(props) {
           <div className="col-11.5">
             <div className="form2">
               <br></br>
-              <h3 className="h31">:בדיקת עמידה בקריטריונים </h3>
+              <h3 className="h312">:בדיקת עמידה בקריטריונים </h3>
               <Form>
                 <Row className="mb-3">
                   <Form.Group controlId="formGridEmail">

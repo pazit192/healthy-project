@@ -62,7 +62,7 @@ function AppBarLocal(props) {
                 variant="h6"
                 noWrap
                 component="a"
-                href="/"
+                // href="/"
                 sx={{
                   ml: 2,
                   display: { xs: "none", md: "flex" },
@@ -75,6 +75,7 @@ function AppBarLocal(props) {
               >
                 שלום-{props.userName}
               </Typography>
+              {/* <Link to="/LoginHome"> */}
               <Button
                 sx={{
                   borderRadius: 20,
@@ -90,9 +91,11 @@ function AppBarLocal(props) {
                 }}
                 variant="contained"
                 type="submit"
+                href="/"
               >
                 התנתק
               </Button>
+              {/* </Link> */}
             </>
           )}
         </Toolbar>

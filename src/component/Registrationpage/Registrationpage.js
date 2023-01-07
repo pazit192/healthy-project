@@ -7,17 +7,51 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { updateUser } from "../Redux/Actions/action";
 import "./Registrationpage.css";
 
+
 export function findRegistrationFormErrors(userDetails) {
   let newErrors = {};
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const { name, email, pon, age } = userDetails;
+  const { name, email, pon,id, age, groupeId } = userDetails;
   // name errors
   let nameRegex = new RegExp("[0-9]");
   if (!name || name === "") newErrors.name = "require";
   else if (name && nameRegex.test(name)) newErrors.name = "validName";
   // errors
-  if (!age || age === "") newErrors.age = "require";
+  if (!age || age === "") 
+    newErrors.age = "require";
+  else  
+    switch(groupeId) {
+      case 1:
+          if (!(age>=40 && age<=60))
+            newErrors.age = "require";
+          break
+      case 2:
+          if (age<=18)
+            newErrors.age = "require";
+          break  
+      case 3:
+          if (age<18)
+            newErrors.age = "require";
+          break  
+      case 4:
+          if (age<18)
+            newErrors.age = "require";
+          break  
+      case 5:
+          if (age<16)
+            newErrors.age = "require";
+          break  
+       case 6:
+          if (age<60)
+            newErrors.age = "require";
+          break 
+    }
 
+//errors id
+let idRegex = new RegExp("[0-9]");
+  if (!id || id === "") newErrors.id = "require";
+  else if ((id && id.length !== 9) || (id && !idRegex.test(id)))
+    newErrors.id = "validid";
   // email errors
   if (!email || email === "") newErrors.email = "require";
   else if (email && !emailRegex.test(email)) newErrors.email = "validEmail";
@@ -49,10 +83,10 @@ export function findRegistrationFormErrors(userDetails) {
 //   )
 // }
 
+
 function Registrationpage(props) {
   const navigation = useNavigate();
   const [errors, setErrors] = useState({});
-
   const { currentUser, dispatch } = props;
 
   const location = useLocation();
@@ -83,23 +117,23 @@ function Registrationpage(props) {
       // No errors!
     } else {
       axios.post(`http://localhost:3030/user/newUser`, user).then((res) => {
-        console.log(res);
-        alert(res.data);
-
-        if (res.data == "נוספת בהצלחה") {
-          //מעבר לעמוד הוספת בהצלחה
+        if ( typeof(res.data) != 'object')
+        {
+          alert(res.data);
+        } else {
+          
           localStorage.setItem("user", JSON.stringify(user));
           dispatch(updateUser(JSON.parse(localStorage.getItem("user"))));
-
+          //מעבר לעמוד הוספת בהצלחה
           navigation("/Confirmationpage");
-          // if(groupeId.id==Trainingorder.id)
-          // {
-          //   // res.Trainingorder.id(style=color:"red")
-          // }
+          
         }
       });
     }
   }
+
+
+
 
   return (
     <>
@@ -131,6 +165,9 @@ function Registrationpage(props) {
                       type="string"
                       placeholder="Enter T.Z"
                     />
+                   <Typography style={{ color: "red" }}>
+                      {errors && errors.id && "נא הכנס מספר בעל 9 ספרות"}
+                    </Typography>
                   </Form.Group>
                 </Row>
 
@@ -166,6 +203,9 @@ function Registrationpage(props) {
                       type="number"
                       placeholder="Enter Age"
                     />
+                     <Typography style={{ color: "red" }}>
+                      {errors && errors.age &&"אנא מלא גיל תקין"}
+                    </Typography>
                   </Form.Group>
 
                   <Form.Group controlId="formGridPassword">
@@ -177,10 +217,12 @@ function Registrationpage(props) {
                       placeholder="Enter date"
                       value={new Date().toISOString().substring(0, 10)}
                     />
+                    <p>ביום הרשמתך לקבוצה מתחיל תקופת הדיאטה*</p>
                   </Form.Group>
                 </Row>
 
                 <Button
+                  
                   onClick={saveNewUser}
                   variant="primary"
                   type="button"

@@ -64,31 +64,31 @@ function Menu1(props) {
                         <ListGroup>
                           <ListGroup.Item
                             style={{
-                              backgroundColor: menu.id === group && "#dbd0d0",
+                              backgroundColor: menu.id === group && "rgb(211, 211, 211)",
                             }}
                           >
-                            {menu.breakfast}:
+                           <b>ארוחת בוקר:</b>{menu.breakfast}
                           </ListGroup.Item>
                           <ListGroup.Item
                             style={{
-                              backgroundColor: menu.id === group && "#dbd0d0",
+                              backgroundColor: menu.id === group && "rgb(211, 211, 211)",
                             }}
                           >
-                            {menu.lunch}
+                            <b>ארוחת צהריים:</b>{menu.lunch}
                           </ListGroup.Item>
                           <ListGroup.Item
                             style={{
-                              backgroundColor: menu.id === group && "#dbd0d0",
+                              backgroundColor: menu.id === group && "rgb(211, 211, 211)",
                             }}
                           >
-                            {menu.Snack}
+                         <b>ארוחת ביינים:</b> {menu.Snack}
                           </ListGroup.Item>
                           <ListGroup.Item
                             style={{
-                              backgroundColor: menu.id === group && "#dbd0d0",
+                              backgroundColor: menu.id === group && "rgb(211, 211, 211)",
                             }}
                           >
-                            {menu.dinner}
+                              <b>ארוחת ערב:</b> {menu.dinner}
                           </ListGroup.Item>
                         </ListGroup>
                       </Card>

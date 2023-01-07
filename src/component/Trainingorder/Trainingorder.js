@@ -1,7 +1,8 @@
+import { style } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, ListGroup } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Trainingorder.css";
 
 function Trainingorder(props) {
@@ -96,28 +97,29 @@ function Trainingorder(props) {
                     style={{
                       width: "18rem",
                       height: "35vh",
-                      overflow: "scroll",
+                      // overflow: "scroll",
                       direction: "ltr",
                     }}
                   >
-                    <Card.Header className="c">{item.day}</Card.Header>
-                    <ListGroup className="b">
+                    <Card.Header  className="c">{item.day}</Card.Header>
+                    <ListGroup style={{ overflow: "scroll" }}className="b">
                       {/* // מעבר על כל סדר אימון ולשלוף רק את מי שהוא כמו היום נוכחי    */}
                       {combine &&
                         combine.length &&
                         combine.map((obj) =>
                           obj.day === item.day ? (
-                            obj.typeTraning === "אימון יחידני" ? (
+                             obj.typeTraning === "אימון יחידני" ? (
                               <ListGroup.Item
                                 className={
                                   user
-                                    ? obj.codeGroupe === user.groupeId
+                                    ? obj.id === user.groupeId
                                       ? "groupColor"
                                       : ""
                                     : ""
                                 }
+                                 
                               >
-                                <button onClick={() => bbbb(obj)} className="c">
+                                <button onClick={() => bbbb(obj)}className="c">
                                   {obj.typeTraning}
                                 </button>
                                 <b>
@@ -125,15 +127,15 @@ function Trainingorder(props) {
                                   {obj.codeGroupe}
                                 </b>
                               </ListGroup.Item>
-                            ) : obj.typeTraning === "אימון קבוצתי" ? (
+                             ): obj.typeTraning === "אימון קבוצתי" ? (
                               <ListGroup.Item
                                 className={
                                   user
-                                    ? obj.codeGroupe === user.groupeId
+                                    ? obj.id === user.groupeId
                                       ? "groupColor"
                                       : ""
                                     : ""
-                                }
+                                }    
                               >
                                 <b>{obj.codeGroupe}</b>
                                 {":"}
@@ -142,18 +144,21 @@ function Trainingorder(props) {
                                 {obj.start}
                                 {"-"}
                                 {obj.finish}
+                             <p><b> השלח קישור לזום</b></p>
                               </ListGroup.Item>
                             ) : (
                               <ListGroup.Item
                                 className={
                                   user
-                                    ? obj.codeGroupe === user.groupeId
+                                    ? obj.id === user.groupeId
                                       ? "groupColor"
                                       : ""
                                     : ""
                                 }
+                                
                               >
                                 <b>{obj.codeGroupe}</b>
+                                {/* <b>{user.groupeId}</b> */}
                                 {":"}
                                 {obj.typeTraning}
                               </ListGroup.Item>
@@ -162,69 +167,14 @@ function Trainingorder(props) {
                             ""
                           )
                         )}
-                      {/* <ListGroup.Item><b>קבוצת אחרי לידה :</b>הליכה</ListGroup.Item>
-                <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצה גיל הזהב </b></ListGroup.Item>
-                <ListGroup.Item><b>קבוצת דיאטה לגיל העמידה:</b> אימון יחידני</ListGroup.Item>
-                <ListGroup.Item><b>קבוצת שמירה על אורך חיים בריא :</b> אימון יחידני</ListGroup.Item>
-                <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטת חגים </b></ListGroup.Item> */}
                     </ListGroup>
                   </Card>
                 ))}
-                {/* <Card style={{ width: '18rem' }}>
-                                    <Card.Header className="c">יום שני</Card.Header>
-                                    <ListGroup className='b'>
-                                        <ListGroup.Item><b>קבוצת כסאח :</b>  אימון קבוצתי בין השעות:19:00-20:30</ListGroup.Item>
-                                        <ListGroup.Item><b>קבוצת אחרי לידה :</b>אימון קבוצתי בין השעות:17:00-18:00</ListGroup.Item>
-                                        <ListGroup.Item><b>קבוצה גיל הזהב :</b> ריצה </ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטה לגיל העמידה </b></ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת שמירה על אורך חיים בריא </b></ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטת חגים </b></ListGroup.Item>
-                                    </ListGroup>
-                                </Card>
-
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Header className="c"> יום  ראשון</Card.Header>
-                                    <ListGroup className='b'>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת כסאח </b></ListGroup.Item>
-                                        <ListGroup.Item><b> קבוצת אחרי לידה:</b> ריצה</ListGroup.Item>
-                                        <ListGroup.Item><b>קבוצה גיל הזהב :</b> הליכה</ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטה לגיל העמידה </b></ListGroup.Item>
-                                        <ListGroup.Item><b>קבוצת שמירה על אורך חיים בריא :</b> אימון יחידני</ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטת חגים </b></ListGroup.Item>
-                                    </ListGroup>
-                                </Card>
-                            </div>
-                        </div>
-                        <br></br>
-                        <div className='col-12'>
-                            <div className='Group1'>
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Header className="c">יום חמישי </Card.Header>
-                                    <ListGroup className='b'>
-                                        <ListGroup.Item><b>קבוצת כסאח :</b> ריצה</ListGroup.Item>
-                                        <ListGroup.Item><b>קבוצת אחרי לידה  :</b>ריצה</ListGroup.Item>
-                                        <ListGroup.Item><b>קבוצה גיל הזהב :</b>  אימון קבוצתי בין השעות:20:00-20:45</ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטה לגיל העמידה </b></ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת שמירה על אורך חיים בריא </b></ListGroup.Item>
-                                        <ListGroup.Item><b><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link>:קבוצת דיאטת חגים </b></ListGroup.Item>
-                                    </ListGroup>
-                                </Card>
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Header className="c"> יום רביעי   </Card.Header>
-                                    <ListGroup className='b'>
-                                        <ListGroup.Item><b>קבוצת כסאח :</b>אימון קבוצתי בין השעות:17:00-18:30</ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת אחרי לידה </b></ListGroup.Item>
-                                        <ListGroup.Item><b> קבוצה גיל הזהב :</b>הליכה </ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטה לגיל העמידה </b></ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת שמירה על אורך חיים בריא </b></ListGroup.Item>
-                                        <ListGroup.Item><Link className="link" to='/Trainingexercises'><button className="c">אימון יחידני</button></Link><b>:קבוצת דיאטת חגים </b></ListGroup.Item>
-                                    </ListGroup>
-                                </Card> */}
               </div>
             </div>
           </div>
         </div>
-        {/* אמור להיות מלא מהדאטה ביס */}
+
       </div>
     </>
   );

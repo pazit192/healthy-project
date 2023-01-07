@@ -1,11 +1,11 @@
 .hb{
-    color: palegreen;
-    font-size: 70px;
-    font-family: "Dybbuk";
-    /* border:2px dashed blue; */
+    color: rgb(160, 218, 112);
+    font-size: 100px;
+   
+    font-family:'Guttman Mantova-Decor';
+
 }
-.borrer{
-      border:2px dashed black; 
-      
-      
+.hbc{
+    padding-top:30px ;
+    margin-top: 30px;
 }

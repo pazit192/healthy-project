@@ -1,11 +1,11 @@
 .h1{
-    color:palegreen;
+    color:rgb(160, 218, 112);
     font-size:70px;
-    font-family:'Dybbuk';
+    font-family:'Guttman Mantova-Decor';
 }
 .h2{
     font-size:50px;  
-    font-family:' FrankRuehl Backslanted';
+    font-family:'Guttman Yad-Light';
     text-align: right;
     padding-right:12% ;
     margin-right:12% ;

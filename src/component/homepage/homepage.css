@@ -1,12 +1,14 @@
-.dav{
-
+.dav1{
+/* margin-top: 20px;
+padding-top: 20px; */
     font-family:'FrankRuehl Backslanted';
-     text-align:center;
-     margin-left:10% !important;
-     padding-left:10% !important;
-     display: inline-flex;
+     /* text-align:center; */
+     /* margin-right:10% !important;
+     padding-right:10% !important; */
+     /* display: inline-flex; */
      flex-direction: row-reverse;
      flex-wrap: wrap;
+     font-size:40px;
 
 }
 .Breadcrumb{
@@ -20,11 +22,18 @@
 }
 .h13{
     font-family:'Dybbuk';
-    color: palegreen;
-    font-size:60px;
+    color: rgb(160, 218, 112);
+    font-size:70px;
     
 }
-  .img1{
+/* .imeges1{
+  size: 50%; */
+/* margin-top: 0%;
+margin-bottom: 0%;
+padding-top: 0%;
+padding-bottom: 0%; */
+/* } */
+  /* .img1{
     margin-right: 50% !important;
     padding-right: 50% !important;
-  }
+  } */

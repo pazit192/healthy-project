@@ -13,12 +13,12 @@ margin-right:auto;
 
 }
 .button{
-    background-color:palegreen; 
+    background-color:rgb(160, 218, 112); 
     font-family:"Alef";
-    border-top-color:palegreen ;
-    border-right-color: palegreen;
-    border-left-color:palegreen ;
-    border-bottom-color: palegreen;
+    border-top-color:rgb(160, 218, 112) ;
+    border-right-color: rgb(160, 218, 112);
+    border-left-color:rgb(160, 218, 112) ;
+    border-bottom-color: rgb(160, 218, 112);
   
 }
 .button:hover{
@@ -30,7 +30,7 @@ margin-right:auto;
     
 }
 .h31{
-  color: palegreen;
+  color: rgb(160, 218, 112);
     font-family:'Dybbuk';
     font-size: 350%;
 

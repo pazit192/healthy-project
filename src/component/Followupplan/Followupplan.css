@@ -17,11 +17,11 @@
     .button1{
         width:70px;
        font-family:"Alef";
-        background-color:palegreen; 
-        border-top-color:palegreen ;
-        border-right-color: palegreen;
-        border-left-color:palegreen ;
-        border-bottom-color: palegreen;
+        background-color:rgb(160, 218, 112); 
+        border-top-color:rgb(160, 218, 112) ;
+        border-right-color: rgb(160, 218, 112);
+        border-left-color:rgb(160, 218, 112) ;
+        border-bottom-color: rgb(160, 218, 112);
       
     }
     .button1:hover{

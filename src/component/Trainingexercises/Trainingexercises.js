@@ -24,12 +24,13 @@ function Trainingexercises(props) {
       <br></br>
       <br></br>
       <div className="code">{codeGroupe}</div>
+       
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
+         
             <div></div>
             <div className="hm2">
-              {/* לא מראה את האימון מאז שהחלפנו פונקצה בindcontroler */}
               {Individualtraining &&
                 Individualtraining.length &&
                 Individualtraining.map((item) => (

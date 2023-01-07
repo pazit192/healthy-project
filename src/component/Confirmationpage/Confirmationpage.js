@@ -1,13 +1,15 @@
 import React from "react";
 import "./Confirmationpage.css";
 
+
 function Confirmationpage(props) {
   return (
     <>
+  
       <div className="container-fluid">
         <div className="row">
           <br></br>
-          <div className="borrer">
+          <div >
             <br></br>
             <br></br>
             <br></br>
@@ -16,14 +18,16 @@ function Confirmationpage(props) {
             <br></br>
 
             <div className="col-12">
-              <h1 className="hb">
+              <div className="hbc">
+              <h1 >
                 <a>
-                  <b>הרשמתך לאתר התקבלה </b>
+                  <b className="hb">הרשמתך לאתר התקבלה </b>
                 </a>
               </h1>
-              <h1 className="hb">
+              <h1 >
                 <a>
-                  <b>!בהצלחה</b>
+                  <b className="hb">👍!בהצלחה</b>
+                  
                 </a>
               </h1>
               <br></br>
@@ -34,6 +38,7 @@ function Confirmationpage(props) {
             <br></br>
             <br></br>
             <br></br>
+            </div>
           </div>
         </div>
       </div>

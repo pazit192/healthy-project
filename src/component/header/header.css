@@ -24,7 +24,7 @@
   text-decoration: none;
   color:white;
   /* margin-right:30px ; */
-  font-size: 20px;
+  font-size: 30px;
 }
   
 .link:hover{
@@ -39,3 +39,15 @@
   padding-left:5px; */
   
 }
+/* .img1{
+  background-image: url("imeges1.jpg");
+  animation: anim1 ease-in-out 20s infinite;
+}
+@keyframes anim1 {
+  0%{
+    background-image: url("imeges1.jpg");
+  }
+  25%{
+    background-image: url("imeges.jpg");
+  }
+} */
